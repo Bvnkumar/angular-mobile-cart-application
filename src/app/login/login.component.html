@@ -1,0 +1,34 @@
+<div class="container">
+	<div class="row m-t-90">
+		<div class="col-md-4 col-md-offset-4">
+			<div class="panel panel-default">
+				<div class="panel-heading" [ngStyle]="{'text-align':'center'}">
+					login
+				</div>
+				<div class="panel-body">
+					<form #courseForm="ngForm">
+						<p *ngIf="loginFailed" [ngClass]="{'red-c':loginFailed}">Please enter a valid credentials</p>
+						<div class="form-group">
+							<label>
+    Username:
+  </label>
+							<input type="text" class="form-control" [(ngModel)]="login.username" name="username" required #username="ngModel" (keyup)="clearError()">
+							<div [hidden]="username.valid || username.pristine" class="alert alert-danger" [ngClass]="{alertClass:true}">
+								Username is required</div>
+						</div>
+						<div class="form-group">
+							<label>
+    Password:
+  </label>
+							<input type="password" class="form-control" [(ngModel)]="login.password" name="password" required #password="ngModel" minlength="5"
+							 (keyup)="clearError()">
+							<div [hidden]="password.valid || password.pristine" class="alert alert-danger" [ngClass]="{alertClassPass:true}">
+								Password should be minimum 5 letters</div>
+						</div>
+						<button class="btn btn-primary m-l-90" (click)="loginCheck(login.username,login.password)" [disabled]="!courseForm.form.valid">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,51 @@
+<div class="well well-sm col-xs-12" [ngClass]="['darkseagreen']">
+	<sidebar></sidebar>&nbsp;
+	<strong [ngClass]="['f-20','white-c']" [ngStyle]="{'color':'black'}">My<span [ngStyle]="{'color':'white'}">cart</span></strong>
+	<span class="glyphicon glyphicon-shopping-cart pull-right cart-color" routerLink="/cart" title="Click to view cart items"
+	 [ngClass]="['f-20','t-20']"><span [ngClass]="['cart-count','f-30']">{{cartCount.length}}</span></span>
+	<div class="btn-group pull-right" [ngStyle]="{'right': '20px','top':'20px'}">
+		<!-- <a class="btn sort" (click)="sortByPrice('HL')" [ngClass]="['white-c']">Sort by price high to low <span class="glyphicon glyphicon-sort"></span></a>&nbsp;<a class="btn sort1" (click)="sortByPrice('LH')" [ngClass]="['white-c']">Sort by price low to high <span class="glyphicon glyphicon-sort"></span></a> -->
+		<span><b>Sort by:</b></span> <select (change)="sortByPrice($event.target)" id="sortbyorder" [ngClass]="['select-box']">
+      <option value="LH">Price low to high</option>
+<option value="HL">Price high to low</option>
+
+
+    </select>
+	</div>
+
+</div>
+<div class="container">
+
+	<div class="row">
+		<div *ngFor="let product of productList">
+			<div class="" [ngClass]="getStyle('block')">
+
+				<div class="thumbnail">
+					<div class="row">
+						<img src="https://consumer-img.huawei.com/content/dam/huawei-cbg-site/common/support/list-image/phones/Honor%209lite.png"
+						 class="img-responsive col-md-4 col-md-offset-4"  /> <!-- routerLink='/feedback/{{product.id}}' -->
+					</div>
+					<div class="row">
+						<h4 class=" col-xs-offset-4 col-xs-6 col-md-offset-4 col-md-6 ">
+							<strong> {{product.name}}</strong>
+						</h4>
+						<p class="col-lg-12 col-xs-12" style="height:70%;position:relative;">Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy </p>
+					</div>
+					<div class="row">
+						<div class="col-md-3 col-xs-5" [ngClass]="">
+							<span class="">{{product.currency}}{{product.price}}</span>
+						</div>
+						<div class="col-md-4 col-xs-7">
+
+
+						</div>
+						<div class="col-md-5 col-xs-offset-2 col-md-offset-0" [ngStyle]="{'text-algin':'right'}" style="text-align:right;">
+							<a class="btn btn-success" (click)="addCart(product.id)" style="margin-left:15px;"> Add Cart</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<button class="btn btn-success pull-right m-t-10" routerLink="/cart" style="position:relative;">Proceed</button>
+</div>

@@ -1,0 +1,42 @@
+.m-t-90{
+  margin-top: 90px;
+}
+
+@media screen and (max-width: 600px) {
+  .m-l-100{
+    margin-left: 100px;
+  }
+  p{
+      padding-left: 15px;
+    }
+}
+
+.m-t-20{
+  margin-top: 20px
+}
+
+@media (min-width:961px){
+  .m-l-50{
+    margin-left: 50px;
+  }
+}
+.pane-header{
+      text-align: center;
+    background-color: cornflowerblue;
+    color: white;
+    font-weight: bold;
+}
+.signup-submit{
+  margin-left:107px;
+  border-radius: 9px;
+  background-color: cornflowerblue
+}
+
+.common-header-style{
+  font-weight: bold;
+  color: white;
+}
+.fb-btn{
+  background-color: #3B5998;
+    color: white;
+}

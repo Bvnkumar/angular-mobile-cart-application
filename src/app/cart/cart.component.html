@@ -1,0 +1,64 @@
+<div class="container">
+	<div class="well well-sm m-t-15" [ngClass]="['darkseagreen']">
+		<span [ngClass]="['white-c']">Cart Details</span>
+		<div class="pull-right" routerLink="/welcome" title="Back to home" [ngClass]="['white-c']"><i class="glyphicon glyphicon-home"></i></div>
+	</div>
+	<div class="panel panel-info">
+		<div class="panel-heading">Your cart Details
+			<div class="pull-right">Total Amount:<span> {{total_price|currency}}</span></div>
+		</div>
+		<div class="panel-body">
+
+
+			<div *ngIf="selectedList.length;then content else other_content">
+			</div>
+			<div class="row">
+				<ng-template #content>
+					<div *ngFor="let i of selectedList">
+						<div class="col-xs-12 col-xs-offset-0 col-md-4 col-md-offset-4">
+							<div class="thumbnail">
+								<button type="button" class="close" (click)="removeItem(i.name,i.id)">
+  <span title="Remove" >&times;</span>
+</button> <img src="https://consumer-img.huawei.com/content/dam/huawei-cbg-site/common/support/list-image/phones/Honor%209lite.png"
+								 style="height:60px;" />
+								<h3 style="text-align:center">{{i.name}}</h3>
+								<div class="row">
+									<div class="col-xs-offset-3 col-md-offset-3">
+										<span>Total Price:<span [ngClass]="[i.name+'total']"> {{i.price*i.quantity|currency}}</span></span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-offset-3 col-md-offset-3">
+										<span>Total Quantity: <span [ngClass]="['minus']" title="Remove" (click)="decQuantity(i.price,i.name)
+">-</span>&nbsp;<span class="quantity" [ngClass]="[i.name]">{{i.quantity}}</span>&nbsp;<span [ngClass]="['minus','plus']"
+										 title="Add" (click)="incQuantity(i.price,i.name)">+</span></span>
+
+									</div>
+
+								</div>
+
+
+
+
+							</div>
+						</div>
+					</div>
+
+
+				</ng-template>
+				<ng-template #other_content>
+					<h2 style="text-align:center;">Your cart is empty </h2>
+				</ng-template>
+
+
+			</div>
+			<div class="row">
+				<a class="pull-left btn btn-danger m-l-10" routerLink="/welcome">Cancel</a>
+				<button class="btn btn-success pull-right m-r-10" routerLink="/success" [disabled]="!selectedList.length">Proceed to pay</button>
+			</div>
+
+
+		</div>
+	</div>
+
+</div>

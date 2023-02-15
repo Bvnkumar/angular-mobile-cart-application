@@ -1,0 +1,46 @@
+<div class="well well-sm col-md-12" [ngClass]="['darkseagreen']">
+	<div class="">
+		<div class="pull-right" routerLink="/welcome" title="Back to home"><i class="glyphicon glyphicon-home"></i></div>
+	</div>
+	<strong>Feedback</strong>
+</div>
+<div class="container">
+	<div class="col-md-12">
+	<div>
+    <img src="https://consumer-img.huawei.com/content/dam/huawei-cbg-site/common/support/list-image/phones/Honor%209lite.png" [ngStyle]="{'width':'20%'}">
+<h3>{{selected_Item.name}}</h3>
+</div>
+		<h4>Ratings({{comments.length}}) &nbsp;&nbsp;
+			<rating (rating)='rateChange($event)'></rating>
+		</h4> <br>
+		<textarea rows="4" cols="50" placeholder="comments ...." [ngClass]="['textarea-style ']" class="col-xs-12 col-md-8" [(ngModel)]="feed"></textarea>
+	</div><br>
+	<div class="col-md-8">
+		<br>
+		<button class="btn btn-sm btn-success" (click)="FeedSubmit()">submit</button>&nbsp;
+		<button class="btn btn-sm btn-danger" routerLink='/welcome'>cancel</button>
+		<div *ngIf="comments.length">
+			<div *ngFor="let comment of comments;let on=index;" [ngClass]="['comments-list']">
+				<div>
+					<p>Narendra
+						<!-- <rating></rating> -->
+
+
+
+					</p>
+<div >
+  <div *ngIf="comment.rating">
+<span class="glyphicon glyphicon-star" id="star" style="display: inline-block" *ngFor="let in of (limit.length-comment.rating);let i=index;" [attr.data-index]="in.id" [ngClass]="{'green-c':comment.rating}"></span>
+</div>
+  </div>
+ 
+
+
+					<p> {{comment.comment}} </p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>

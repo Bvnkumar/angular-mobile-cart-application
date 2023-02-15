@@ -1,0 +1,41 @@
+$header-color:darkseagreen;
+$header-title-color:white;
+.m-r-10{
+margin-right: 10px;
+}
+.m-l-10{
+  margin-left: 10px;
+}
+
+.m-t-15{
+  margin-top: 15px;
+}
+.darkseagreen{
+  background: darkseagreen;
+}
+
+.white-c{
+  color: $header-title-color;
+}
+
+.thumbnail{
+  .minus{
+    width: 46%;
+    height: 30%;
+    border: 1px #c2c2c2 solid;
+    border-radius: 50px;
+    padding: 0 4px;
+    cursor: pointer;
+  }
+  .quantity{
+    width: 46%;
+    height: 30%;
+    border: 1px solid #c2c2c2;
+    border-radius: 4px;
+    padding: 0 4px
+  }
+}
+
+.thumbnail:hover{
+    box-shadow: 4px 4px $header-color;
+}
