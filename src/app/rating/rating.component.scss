@@ -1,9 +1,23 @@
-span{
-  color:gray
+.rating-row {
+  display: inline-flex;
+  gap: 4px;
 }
-span:hover{
-  color: green;
+
+.rating-btn {
+  border: 0;
+  background: transparent;
+  padding: 0;
 }
-.green-c{
-  color: green;
+
+span {
+  color: #c3c5c8;
+  font-size: 18px;
+}
+
+span:hover {
+  color: #f59e0b;
+}
+
+.green-c {
+  color: #f59e0b;
 }

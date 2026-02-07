@@ -1,46 +1,42 @@
-<div class="well well-sm col-md-12" [ngClass]="['darkseagreen']">
-	<div class="">
-		<div class="pull-right" routerLink="/welcome" title="Back to home"><i class="glyphicon glyphicon-home"></i></div>
-	</div>
-	<strong>Feedback</strong>
-</div>
-<div class="container">
-	<div class="col-md-12">
-	<div>
-    <img src="https://consumer-img.huawei.com/content/dam/huawei-cbg-site/common/support/list-image/phones/Honor%209lite.png" [ngStyle]="{'width':'20%'}">
-<h3>{{selected_Item.name}}</h3>
-</div>
-		<h4>Ratings({{comments.length}}) &nbsp;&nbsp;
-			<rating (rating)='rateChange($event)'></rating>
-		</h4> <br>
-		<textarea rows="4" cols="50" placeholder="comments ...." [ngClass]="['textarea-style ']" class="col-xs-12 col-md-8" [(ngModel)]="feed"></textarea>
-	</div><br>
-	<div class="col-md-8">
-		<br>
-		<button class="btn btn-sm btn-success" (click)="FeedSubmit()">submit</button>&nbsp;
-		<button class="btn btn-sm btn-danger" routerLink='/welcome'>cancel</button>
-		<div *ngIf="comments.length">
-			<div *ngFor="let comment of comments;let on=index;" [ngClass]="['comments-list']">
-				<div>
-					<p>Narendra
-						<!-- <rating></rating> -->
+<section class="feedback-shell page-shell">
+  <header class="feedback-header">
+    <div>
+      <p>Product reviews</p>
+      <h2>Feedback</h2>
+    </div>
+    <a class="feedback-home" routerLink="/welcome" title="Back to home">
+      <i class="glyphicon glyphicon-home"></i>
+      <span>Menu</span>
+    </a>
+  </header>
 
+  <div class="feedback-layout">
+    <article class="feedback-card">
+      <img src="https://consumer-img.huawei.com/content/dam/huawei-cbg-site/common/support/list-image/phones/Honor%209lite.png" class="feedback-card__image">
+      <h3>{{selected_Item.name}}</h3>
+      <p class="feedback-card__caption">Ratings ({{comments.length}}) · Tell others what you liked</p>
+      <rating (rating)="rateChange($event)"></rating>
+      <textarea rows="4" placeholder="Write your review..." class="textarea-style" [(ngModel)]="feed"></textarea>
+      <div class="feedback-actions">
+        <button class="btn btn-brand" (click)="FeedSubmit()">Submit</button>
+        <button class="btn btn-default" routerLink="/welcome">Cancel</button>
+      </div>
+    </article>
 
-
-					</p>
-<div >
-  <div *ngIf="comment.rating">
-<span class="glyphicon glyphicon-star" id="star" style="display: inline-block" *ngFor="let in of (limit.length-comment.rating);let i=index;" [attr.data-index]="in.id" [ngClass]="{'green-c':comment.rating}"></span>
-</div>
+    <section class="comments-wrap">
+      <h4>Recent reviews</h4>
+      <div *ngIf="comments.length; else empty">
+        <article *ngFor="let comment of comments; let on = index;" class="comments-list">
+          <p class="comments-list__name">Customer {{on + 1}}</p>
+          <div class="comments-list__stars" *ngIf="comment.rating">
+            <span class="glyphicon glyphicon-star green-c" *ngFor="let star of getStars(comment.rating)"></span>
+          </div>
+          <p>{{comment.comment}}</p>
+        </article>
+      </div>
+      <ng-template #empty>
+        <p class="comments-empty">No feedback yet. Be the first to review.</p>
+      </ng-template>
+    </section>
   </div>
- 
-
-
-					<p> {{comment.comment}} </p>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-</div>
+</section>

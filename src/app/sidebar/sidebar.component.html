@@ -1,11 +1,8 @@
 <div id="mySidenav" class="sidenav">
-	<a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&#9776;</a>
-	<hr>
+	<button class="closebtn" (click)="closeNav()">Close</button>
 	<a routerLink="/welcome" class="thumbline">Grid View</a>
-	<hr>
 	<a routerLink="/welcome/1">List View</a>
-	<hr>
-	<span style="margin-right:10px;color:white" class="pull-right glyphicon glyphicon-log-out" (click)="logout()"> logout</span>
+	<button class="logout-btn" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</button>
 </div>
 
-<span style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776;</span>
+<button class="menu-btn" (click)="openNav()">&#9776;</button>

@@ -1,36 +1,75 @@
-.m-t-90{
-  margin-top: 90px;
-}
-.m-l-90{
-      margin-left: 90px;
-
-}
-
-.alertClass{
-  height: 40px;
-    padding: 11px;
-    padding-left: 25px;
-    font-size: 12px;
-}
-.alertClassPass{
-  height: 40px;
-    padding: 11px;
-    padding-left: 25px;
-        font-size: 12px;
-
-}
-input.ng-valid[required]  {
-  border-left: 5px solid #42A948; /* green */
+.login-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 20px;
 }
 
-input.ng-dirty.ng-invalid:not(form)  {
-  border-left: 5px solid #a94442; /* red */
-}
-.red-c{
-  color:  red;
+.login-card {
+  width: min(420px, 100%);
+  border-radius: 18px;
+  border: 1px solid var(--brand-border);
+  background: linear-gradient(170deg, #ffffff 0%, #fff6ed 100%);
+  box-shadow: var(--brand-shadow);
+  padding: 24px;
 }
 
-@keyframes buttonEffect{
-  from{color:red}
-  to{color: green}
+.login-kicker {
+  margin: 0;
+  color: var(--brand-muted);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.login-card h2 {
+  margin-top: 4px;
+  margin-bottom: 8px;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.login-subtitle {
+  margin-bottom: 16px;
+  color: var(--brand-muted);
+  font-size: 13px;
+}
+
+.login-card label {
+  font-weight: 600;
+  color: #3c4046;
+}
+
+.form-control {
+  height: 42px;
+  border: 1px solid #f2d2b8;
+  border-radius: 10px;
+}
+
+.alertClass,
+.alertClassPass {
+  margin-top: 8px;
+  margin-bottom: 0;
+  font-size: 12px;
+  padding: 8px 10px;
+}
+
+input.ng-valid[required] {
+  border-left: 4px solid #22c55e;
+}
+
+input.ng-dirty.ng-invalid:not(form) {
+  border-left: 4px solid #ef4444;
+}
+
+.red-c {
+  border-radius: 10px;
+  padding: 8px 10px;
+  color: #991b1b;
+  background: #fee2e2;
+}
+
+.login-submit {
+  width: 100%;
+  margin-top: 8px;
+  height: 44px;
 }

@@ -1,4 +1,4 @@
-import {Component,ElementRef,Renderer} from '@angular/core';
+import {Component,ElementRef,Renderer2} from '@angular/core';
 import {Router} from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Login } from '../login';
@@ -17,7 +17,7 @@ loginFailed=false;
 registerForm: FormGroup;
   login = new Login("", "");
 
-  constructor(public router:Router,public formBuilder:FormBuilder,public elementref:ElementRef,public render:Renderer) { 
+  constructor(public router:Router,public formBuilder:FormBuilder,public elementref:ElementRef,public render:Renderer2) { 
   }
   ngOnInit() {
     this.loginFailed=false;

@@ -1,3 +1,78 @@
-/* Add application styles & imports to this file! */
-
 @import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  --brand-primary: #fc8019;
+  --brand-primary-dark: #e56f11;
+  --brand-primary-soft: #ffead6;
+  --brand-ink: #1f1f1f;
+  --brand-muted: #686b78;
+  --brand-surface: #ffffff;
+  --brand-bg: #fff7f1;
+  --brand-border: #f1d7c0;
+  --brand-shadow: 0 14px 36px rgba(252, 128, 25, 0.16);
+  --brand-radius-lg: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: var(--brand-ink);
+  background:
+    radial-gradient(circle at 12% 10%, #ffe7d2 0 15%, transparent 38%),
+    radial-gradient(circle at 88% 18%, #fff0dd 0 12%, transparent 36%),
+    linear-gradient(180deg, #fffaf4 0%, #fff5ea 100%);
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+.btn-brand {
+  border: 0;
+  border-radius: 12px;
+  background: var(--brand-primary);
+  color: #fff;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn-brand:hover,
+.btn-brand:focus {
+  color: #fff;
+  background: var(--brand-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(252, 128, 25, 0.25);
+}
+
+.page-shell {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
