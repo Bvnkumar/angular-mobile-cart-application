@@ -1,5 +1,58 @@
 $header-color:darkseagreen;
 $header-title-color:white;
+$panel-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+$card-shadow: 0 10px 24px rgba(15, 23, 42, 0.14);
+$soft-border: rgba(148, 163, 184, 0.45);
+$muted-text: #475569;
+$accent: #16a34a;
+
+.cart-container {
+  padding-top: 10px;
+}
+
+.cart-header {
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4ade80, $header-color);
+  box-shadow: $panel-shadow;
+}
+
+.cart-title {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+.cart-home {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.cart-panel {
+  border-radius: 14px;
+  border: 1px solid $soft-border;
+  box-shadow: $panel-shadow;
+  overflow: hidden;
+}
+
+.cart-panel__heading {
+  background: #f8fafc;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.cart-summary {
+  font-size: 15px;
+  color: $muted-text;
+
+  span {
+    font-weight: 700;
+    color: #0f172a;
+  }
+}
+
+.cart-panel__body {
+  background: #f1f5f9;
+}
 .m-r-10{
 margin-right: 10px;
 }
@@ -19,23 +72,67 @@ margin-right: 10px;
 }
 
 .thumbnail{
+  border: 1px solid $soft-border;
+  border-radius: 16px;
+  box-shadow: $card-shadow;
+  padding: 18px 16px;
+  background: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  h3 {
+    margin-top: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  .cart-item__image {
+    display: block;
+    margin: 0 auto 8px;
+  }
+
   .minus{
     width: 46%;
     height: 30%;
     border: 1px #c2c2c2 solid;
     border-radius: 50px;
-    padding: 0 4px;
+    padding: 2px 8px;
     cursor: pointer;
+    font-weight: 600;
+    background: #f8fafc;
+    color: $muted-text;
   }
   .quantity{
     width: 46%;
     height: 30%;
     border: 1px solid #c2c2c2;
     border-radius: 4px;
-    padding: 0 4px
+    padding: 2px 8px;
+    font-weight: 600;
+    color: #0f172a;
+    background: #fff;
   }
 }
 
 .thumbnail:hover{
-    box-shadow: 4px 4px $header-color;
+    box-shadow: 0 18px 36px rgba(15, 23, 42, 0.18);
+    transform: translateY(-2px);
+}
+
+.cart-qty {
+  color: $accent;
+  border-color: rgba(22, 163, 74, 0.4);
+}
+
+.cart-actions {
+  margin-top: 15px;
+}
+
+.cart-actions__cancel {
+  border-radius: 20px;
+  padding: 8px 18px;
+}
+
+.cart-actions__pay {
+  border-radius: 20px;
+  padding: 8px 18px;
 }
