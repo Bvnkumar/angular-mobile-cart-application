@@ -1,5 +1,5 @@
 
 <div>
- <span class="glyphicon glyphicon-star" id="star" style="display: inline-block" *ngFor="let in of limit;let i=index;" (click)='getRating()' [attr.data-index]="in.id" [ngClass]="{'green-c':in.valid}"></span>
+ <span class="glyphicon glyphicon-star" id="star" style="display: inline-block" *ngFor="let in of limit" (click)="getRating(in.id)" [attr.data-index]="in.id" [ngClass]="{'green-c':in.valid}"></span>
 </div>
 
