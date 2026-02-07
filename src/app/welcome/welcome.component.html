@@ -20,7 +20,7 @@
       <button class="cart-pill" routerLink="/cart" title="Click to view cart items">
         <span class="glyphicon glyphicon-shopping-cart"></span>
         <span>Cart</span>
-        <span class="cart-count">{{cartCount.length}}</span>
+        <span class="cart-count">{{cartCount}}</span>
       </button>
     </div>
   </header>
@@ -55,7 +55,7 @@
             <div class="menu-card__footer">
               <strong>{{product.currency}}{{product.price}}</strong>
               <div class="menu-card__actions">
-                <a [routerLink]="['/feedback', product.id]" class="menu-card__feedback">Reviews</a>
+                <button type="button" class="menu-card__feedback" (click)="openReviews(product)">Reviews</button>
                 <button class="btn btn-brand" (click)="addCart(product.id)">Add to Cart</button>
               </div>
             </div>
@@ -69,3 +69,67 @@
     <button class="btn btn-brand" routerLink="/cart">Proceed to Checkout</button>
   </div>
 </section>
+
+<div *ngIf="isDuplicateModalOpen" class="modal fade in" tabindex="-1" role="dialog" style="display: block;">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="closeDuplicateModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Item already in cart</h4>
+      </div>
+      <div class="modal-body">
+        <p>{{duplicateProduct?.name}} is already in your cart. Add one more?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="closeDuplicateModal()">Cancel</button>
+        <button type="button" class="btn btn-brand" (click)="confirmAddDuplicateProduct()">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="isDuplicateModalOpen" class="modal-backdrop fade in"></div>
+
+<div *ngIf="isReviewModalOpen" class="modal fade in" tabindex="-1" role="dialog" style="display: block;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content review-modal">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="closeReviewModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Reviews: {{selectedReviewProduct?.name}}</h4>
+      </div>
+      <div class="modal-body review-modal__body">
+        <p class="review-modal__caption">Ratings ({{productReviews.length}}) - Tell others what you liked</p>
+        <rating (rating)="onReviewRatingChange($event)"></rating>
+        <textarea
+          rows="4"
+          placeholder="Write your review..."
+          class="textarea-style review-modal__textarea"
+          [(ngModel)]="reviewText"></textarea>
+
+        <section class="review-modal__list">
+          <h5>Recent reviews</h5>
+          <div *ngIf="productReviews.length; else noReviews">
+            <article *ngFor="let review of productReviews; let i = index" class="comments-list">
+              <p class="comments-list__name">Customer {{i + 1}}</p>
+              <div class="comments-list__stars" *ngIf="review.rating">
+                <span class="glyphicon glyphicon-star green-c" *ngFor="let star of getStars(review.rating)"></span>
+              </div>
+              <p>{{review.comment}}</p>
+            </article>
+          </div>
+          <ng-template #noReviews>
+            <p class="comments-empty">No feedback yet. Be the first to review.</p>
+          </ng-template>
+        </section>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="closeReviewModal()">Close</button>
+        <button type="button" class="btn btn-brand" (click)="submitReview()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="isReviewModalOpen" class="modal-backdrop fade in"></div>
