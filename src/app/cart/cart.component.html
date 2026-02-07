@@ -1,13 +1,13 @@
-<div class="container">
-	<div class="well well-sm m-t-15" [ngClass]="['darkseagreen']">
-		<span [ngClass]="['white-c']">Cart Details</span>
-		<div class="pull-right" routerLink="/welcome" title="Back to home" [ngClass]="['white-c']"><i class="glyphicon glyphicon-home"></i></div>
+<div class="container cart-container">
+	<div class="well well-sm m-t-15 cart-header" [ngClass]="['darkseagreen']">
+		<span class="cart-title" [ngClass]="['white-c']">Cart Details</span>
+		<div class="pull-right cart-home" routerLink="/welcome" title="Back to home" [ngClass]="['white-c']"><i class="glyphicon glyphicon-home"></i></div>
 	</div>
-	<div class="panel panel-info">
-		<div class="panel-heading">Your cart Details
-			<div class="pull-right">Total Amount:<span> {{total_price|currency}}</span></div>
+	<div class="panel panel-info cart-panel">
+		<div class="panel-heading cart-panel__heading">Your cart Details
+			<div class="pull-right cart-summary">Total Amount:<span> {{total_price|currency}}</span></div>
 		</div>
-		<div class="panel-body">
+		<div class="panel-body cart-panel__body">
 
 
 			<div *ngIf="selectedList.length;then content else other_content">
@@ -52,9 +52,9 @@
 
 
 			</div>
-			<div class="row">
-				<a class="pull-left btn btn-danger m-l-10" routerLink="/welcome">Cancel</a>
-				<button class="btn btn-success pull-right m-r-10" routerLink="/success" [disabled]="!selectedList.length">Proceed to pay</button>
+			<div class="row cart-actions">
+				<a class="pull-left btn btn-danger m-l-10 cart-actions__cancel" routerLink="/welcome">Cancel</a>
+				<button class="btn btn-success pull-right m-r-10 cart-actions__pay" routerLink="/success" [disabled]="!selectedList.length">Proceed to pay</button>
 			</div>
 
 
