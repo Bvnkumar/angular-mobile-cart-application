@@ -8,10 +8,16 @@ export interface Product {
   quantity: number;
 }
 
+export interface CommentEntry {
+  id: number;
+  comment: string;
+  rating: number;
+}
+
 @Injectable()
 export class AppGlobals {
   cartProduts: number[] = [];
-  comments: string[] = [];
+  comments: CommentEntry[] = [];
   productList: Product[] = [
     { name: 'samsung', price: 12, currency: '$', id: 1, quantity: 1 },
     { name: 'Nokia', price: 13, currency: '$', id: 2, quantity: 1 },

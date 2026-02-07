@@ -1,64 +1,59 @@
-<div class="container cart-container">
-	<div class="well well-sm m-t-15 cart-header" [ngClass]="['darkseagreen']">
-		<span class="cart-title" [ngClass]="['white-c']">Cart Details</span>
-		<div class="pull-right cart-home" routerLink="/welcome" title="Back to home" [ngClass]="['white-c']"><i class="glyphicon glyphicon-home"></i></div>
-	</div>
-	<div class="panel panel-info cart-panel">
-		<div class="panel-heading cart-panel__heading">Your cart Details
-			<div class="pull-right cart-summary">Total Amount:<span> {{total_price|currency}}</span></div>
-		</div>
-		<div class="panel-body cart-panel__body">
+<div class="container cart-container page-shell">
+  <header class="cart-header">
+    <div>
+      <p>Your order</p>
+      <h2>Cart Details</h2>
+    </div>
+    <a class="cart-home" routerLink="/welcome" title="Back to home">
+      <i class="glyphicon glyphicon-home"></i>
+      <span>Menu</span>
+    </a>
+  </header>
 
+  <section class="cart-panel">
+    <div class="cart-panel__heading">
+      <span>Items in your cart</span>
+      <strong>Total: {{total_price | currency}}</strong>
+    </div>
+    <div class="cart-panel__note">
+      <span><i class="glyphicon glyphicon-ok-sign"></i> Free delivery on orders above $20</span>
+      <span><i class="glyphicon glyphicon-flash"></i> Avg dispatch time: 20 mins</span>
+    </div>
 
-			<div *ngIf="selectedList.length;then content else other_content">
-			</div>
-			<div class="row">
-				<ng-template #content>
-					<div *ngFor="let i of selectedList">
-						<div class="col-xs-12 col-xs-offset-0 col-md-4 col-md-offset-4">
-							<div class="thumbnail">
-								<button type="button" class="close" (click)="removeItem(i)">
-  <span title="Remove" >&times;</span>
-</button> <img src="https://consumer-img.huawei.com/content/dam/huawei-cbg-site/common/support/list-image/phones/Honor%209lite.png"
-								 style="height:60px;" />
-								<h3 style="text-align:center">{{i.name}}</h3>
-								<div class="row">
-									<div class="col-xs-offset-3 col-md-offset-3">
-										<span>Total Price:<span> {{i.price*i.quantity|currency}}</span></span>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-xs-offset-3 col-md-offset-3">
-										<span>Total Quantity: <span [ngClass]="['minus']" title="Remove" (click)="decQuantity(i)
-">-</span>&nbsp;<span class="quantity">{{i.quantity}}</span>&nbsp;<span [ngClass]="['minus','plus']"
-										 title="Add" (click)="incQuantity(i)">+</span></span>
+    <div *ngIf="selectedList.length; then content else other_content"></div>
 
-									</div>
+    <ng-template #content>
+      <div class="row">
+        <div *ngFor="let i of selectedList" class="col-xs-12 col-md-6">
+          <article class="cart-item">
+            <button type="button" class="close" (click)="removeItem(i)">
+              <span title="Remove">&times;</span>
+            </button>
+            <img src="https://consumer-img.huawei.com/content/dam/huawei-cbg-site/common/support/list-image/phones/Honor%209lite.png"
+              class="cart-item__image" />
+            <h3>{{i.name}}</h3>
+            <p class="cart-item__price">{{i.price * i.quantity | currency}}</p>
+            <div class="cart-item__qty">
+              <span>Total Quantity:</span>
+              <button class="minus" title="Remove" (click)="decQuantity(i)">-</button>
+              <span class="quantity">{{i.quantity}}</span>
+              <button class="minus plus" title="Add" (click)="incQuantity(i)">+</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </ng-template>
 
-								</div>
+    <ng-template #other_content>
+      <div class="cart-empty">
+        <h3>Your cart is empty</h3>
+        <p>Add products from menu to continue checkout.</p>
+      </div>
+    </ng-template>
 
-
-
-
-							</div>
-						</div>
-					</div>
-
-
-				</ng-template>
-				<ng-template #other_content>
-					<h2 style="text-align:center;">Your cart is empty </h2>
-				</ng-template>
-
-
-			</div>
-			<div class="row cart-actions">
-				<a class="pull-left btn btn-danger m-l-10 cart-actions__cancel" routerLink="/welcome">Cancel</a>
-				<button class="btn btn-success pull-right m-r-10 cart-actions__pay" routerLink="/success" [disabled]="!selectedList.length">Proceed to pay</button>
-			</div>
-
-
-		</div>
-	</div>
-
+    <div class="cart-actions">
+      <a class="btn btn-default cart-actions__cancel" routerLink="/welcome">Continue Shopping</a>
+      <button class="btn btn-brand cart-actions__pay" routerLink="/success" [disabled]="!selectedList.length">Proceed to Pay</button>
+    </div>
+  </section>
 </div>

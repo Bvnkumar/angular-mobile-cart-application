@@ -1,40 +1,65 @@
-body {
-    font-family: "Lato", sans-serif;
-    background-color: whitesmok;
-}
-
 .sidenav {
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 20;
     top: 0;
     left: 0;
-    background-color: darkseagreen;
+    background: linear-gradient(180deg, #ff8d2b 0%, #f17412 100%);
     overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
+    transition: 0.35s;
+    padding-top: 54px;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
 }
 
-.sidenav a {
-    padding: 8px 8px 8px 32px;
+.sidenav a,
+.logout-btn {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    text-align: left;
+    padding: 10px 28px;
     text-decoration: none;
-    font-size: 25px;
-    color: #f1f1f1;
+    font-size: 18px;
+    color: #fff8f0;
     display: block;
     transition: 0.3s;
+    cursor: pointer;
 }
 
-.sidenav a:hover {
-    color: black  ;
-    background-color: whitesmoke;
+.sidenav a:hover,
+.logout-btn:hover {
+    color: #1f1f1f;
+    background-color: #ffdbc0;
 }
 
-.sidenav .closebtn {
+.closebtn {
     position: absolute;
-    top: -6px;
-    right: 6px;
-    font-size: 27px;
+    top: 8px;
+    right: 10px;
+    border: 0;
+    border-radius: 10px;
+    padding: 6px 10px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.menu-btn {
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--brand-primary-dark);
+  font-size: 24px;
+  line-height: 1;
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.16);
+}
+
+.logout-btn {
+  margin-top: 10px;
 }
 
 @media screen and (max-height: 450px) {
